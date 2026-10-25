@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bloom-bg: #F5EFF8;
+  --color-bloom-secondary: #D7C4E8;
+  --color-bloom-mauve: #B48AB8;
+  --color-bloom-dusty: #765477;
+  --color-bloom-plum: #342C40;
+}
+
+body {
+  margin: 0;
+  font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+  background-color: var(--color-bloom-bg);
+  color: var(--color-bloom-plum);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Quicksand', 'Nunito', sans-serif;
+  color: var(--color-bloom-plum);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F5EFF8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D7C4E8;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B48AB8;
+}
+
+/* Focus outline for high accessibility */
+*:focus-visible {
+  outline: 2px solid #765477;
+  outline-offset: 2px;
+}
+
+/* Gentle keyframe float animation for mascot */
+@keyframes gentle-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-gentle-bounce {
+  animation: gentle-bounce 3.5s ease-in-out infinite;
+}
+
+/* Glass card styling */
+.bloom-card {
+  background: #FFFFFF;
+  border: 1px solid #E8DCEF;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 20px rgba(52, 44, 64, 0.04);
+  transition: all 0.25s ease-in-out;
+}
+
+.bloom-card:hover {
+  box-shadow: 0 8px 30px rgba(118, 84, 119, 0.09);
+}
+
+/* Lavender gradient button */
+.btn-primary {
+  background-color: #B48AB8;
+  color: #FFFFFF;
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  border-radius: 1rem;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #765477;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(118, 84, 119, 0.25);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background-color: #D7C4E8;
+  color: #342C40;
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  border-radius: 1rem;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: #B48AB8;
+  color: #FFFFFF;
+  transform: translateY(-1px);
+}

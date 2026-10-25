@@ -1,0 +1,118 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id               String             @id @default(uuid())
+  username         String             @unique
+  passwordHash     String
+  nickname         String             @default("Friend")
+  ageBand          String             @default("13-14")
+  periodStatus     String             @default("not_started") // "not_started" | "started_recently" | "tracking_regularly"
+  learningProgramStartedAt DateTime   @default(now())
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+
+  periods          PeriodRecord[]
+  journalEntries   JournalEntry[]
+  learningProgress LearningProgress[]
+  quizAttempts     QuizAttempt[]
+  badges           EarnedBadge[]
+  dailyActivities  DailyLearningActivity[]
+
+  @@index([username])
+}
+
+model PeriodRecord {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  startDate String   // "YYYY-MM-DD"
+  endDate   String?  // "YYYY-MM-DD" or null
+  flow      String   @default("medium") // "light" | "medium" | "heavy"
+  symptoms  String   @default("[]") // JSON stringified array of symptoms
+  mood      String?  // "happy" | "calm" | "sensitive" | "tired" | "anxious" | "frustrated"
+  energy    String?  // "low" | "medium" | "high"
+  notes     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId, startDate])
+}
+
+model JournalEntry {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  date      String   // "YYYY-MM-DD"
+  mood      String   // "happy" | "calm" | "sensitive" | "tired" | "anxious" | "frustrated"
+  energy    String   // "low" | "medium" | "high"
+  cramps    String   @default("none") // "none" | "mild" | "moderate" | "strong"
+  symptoms  String   @default("[]") // JSON stringified array of symptoms
+  notes     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, date])
+  @@index([userId, date])
+}
+
+model LearningProgress {
+  id           String   @id @default(uuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lessonId     String
+  completed    Boolean  @default(true)
+  completedAt  DateTime @default(now())
+  pointsEarned Int      @default(15)
+
+  @@unique([userId, lessonId])
+  @@index([userId])
+}
+
+model QuizAttempt {
+  id             String   @id @default(uuid())
+  userId         String
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  quizId         String
+  score          Int
+  totalQuestions Int
+  passed         Boolean  @default(true)
+  createdAt      DateTime @default(now())
+
+  @@index([userId])
+}
+
+model EarnedBadge {
+  id               String   @id @default(uuid())
+  userId           String
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  badgeId          String
+  badgeName        String
+  badgeDescription String
+  badgeIcon        String
+  earnedAt         DateTime @default(now())
+
+  @@unique([userId, badgeId])
+  @@index([userId])
+}
+
+model DailyLearningActivity {
+  id           String   @id @default(uuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  activityId   String   // e.g., "day-1-mcq-1" or "day-1-mf-1"
+  dayNumber    Int
+  activityType String   // "mcq" | "myth_fact"
+  activityDate String   // "YYYY-MM-DD" local calendar date
+  completedAt  DateTime @default(now())
+
+  @@unique([userId, activityId])
+  @@index([userId, activityDate])
+  @@index([userId])
+}
