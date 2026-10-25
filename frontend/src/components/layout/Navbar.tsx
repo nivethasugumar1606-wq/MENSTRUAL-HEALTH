@@ -81,6 +81,15 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         <div className="flex items-center gap-2">
+          {/* Switch Portal Link */}
+          <a
+            href="/"
+            className="text-[11px] font-bold text-bloom-dusty hover:text-bloom-plum bg-bloom-bg hover:bg-bloom-secondary/30 px-2 py-1 rounded-lg border border-bloom-border transition shrink-0"
+            title="Return to Welcome Portal Selection"
+          >
+            ← Portals
+          </a>
+
           {/* Medical Glossary Quick Button */}
           <button
             type="button"
@@ -148,6 +157,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <span className="font-extrabold text-bloom-plum text-lg tracking-tight block">
                   {discreetMode ? 'Diary' : 'Nurtura'}
                 </span>
+                {!discreetMode && (
+                  <span className="text-[10px] font-bold text-bloom-mauve uppercase tracking-wider block">
+                    Kids Portal
+                  </span>
+                )}
               </div>
             </button>
 
@@ -160,6 +174,20 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <X size={18} />
             </button>
+          </div>
+
+          <div className="mt-2.5 pt-2 border-t border-bloom-border/60 flex items-center justify-between">
+            <span className="text-[10px] font-extrabold uppercase tracking-wider text-bloom-dusty/70">
+              Ages 10–16
+            </span>
+            <a
+              href="/"
+              className="text-[11px] font-bold text-bloom-dusty hover:text-bloom-plum bg-bloom-bg hover:bg-bloom-secondary/30 px-2 py-0.5 rounded-lg border border-bloom-border transition flex items-center gap-1"
+              title="Return to Welcome Portal Selection"
+            >
+              <span>←</span>
+              <span>Switch Portal</span>
+            </a>
           </div>
         </div>
 

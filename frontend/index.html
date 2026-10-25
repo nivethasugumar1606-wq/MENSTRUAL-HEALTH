@@ -2,38 +2,387 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23784E82'/><path d='M17.5 9.2C13.2 9.2 9.8 12.3 9.8 16.2C9.8 20.1 13.2 23.2 17.5 23.2C18.6 23.2 19.6 22.9 20.5 22.4C16.8 21.6 14.1 19.1 14.1 16.2C14.1 13.3 16.8 10.8 20.5 10C19.6 9.5 18.6 9.2 17.5 9.2Z' fill='%23FDEEF4'/><path d='M22.8 9.5C22.8 11.2 23.6 12 25.3 12C23.6 12 22.8 12.8 22.8 14.5C22.8 12.8 22 12 20.3 12C22 12 22.8 11.2 22.8 9.5Z' fill='%23FDEEF4'/></svg>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nurtura — Menstrual Health & Learning for Girls</title>
-    <meta name="description" content="A private, friendly, and gentle menstrual health tracker and educational companion designed specifically for girls ages 10 to 16." />
-    <!-- Google Fonts: Quicksand & Nunito -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
-  </head>
-  <body class="bg-bloom-bg text-bloom-plum antialiased selection:bg-bloom-secondary selection:text-bloom-plum min-h-screen">
-    <div id="root"></div>
-    <script>
-      if (window.location.protocol === 'file:') {
-        window.addEventListener('DOMContentLoaded', function () {
-          var el = document.getElementById('root');
-          if (el) {
-            el.innerHTML =
-              '<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#F5EFF8;padding:24px;font-family:system-ui,sans-serif;color:#342C40;">' +
-              '<div style="max-width:520px;background:#ffffff;border:1px solid #D7C4E8;padding:36px;border-radius:24px;box-shadow:0 12px 36px rgba(120,78,130,0.1);text-align:center;">' +
-              '<div style="font-size:42px;margin-bottom:12px;">🌙</div>' +
-              '<h2 style="font-size:22px;font-weight:800;color:#342C40;margin:0 0 12px 0;">Nurtura requires its local server</h2>' +
-              '<p style="font-size:14px;color:#765477;line-height:1.6;margin:0 0 20px 0;">Opening <code>index.html</code> directly cannot run React, Vite, or the backend database.</p>' +
-              '<div style="background:#F5EFF8;padding:16px 20px;border-radius:14px;text-align:left;margin-bottom:20px;">' +
-              '<p style="font-size:12px;font-weight:800;color:#784E82;text-transform:uppercase;margin:0 0 6px 0;">How to open:</p>' +
-              '<p style="font-size:14px;color:#342C40;margin:0;">Double-click <strong>Start Nurtura.bat</strong> in the main project folder.</p>' +
-              '</div>' +
-              '<a href="http://localhost:5173" style="display:inline-block;background:#784E82;color:#fff;padding:10px 22px;border-radius:12px;text-decoration:none;font-weight:700;font-size:14px;">Open http://localhost:5173</a>' +
-              '</div></div>';
-          }
-        });
+    <title>Nurtura — Welcome</title>
+    <meta name="description" content="Welcome to Nurtura — A supportive space for menstrual health, learning, and wellbeing." />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23784E82'/><path d='M17.5 9.2C13.2 9.2 9.8 12.3 9.8 16.2C9.8 20.1 13.2 23.2 17.5 23.2C18.6 23.2 19.6 22.9 20.5 22.4C16.8 21.6 14.1 19.1 14.1 16.2C14.1 13.3 16.8 10.8 20.5 10C19.6 9.5 18.6 9.2 17.5 9.2Z' fill='%23FDEEF4'/><path d='M22.8 9.5C22.8 11.2 23.6 12 25.3 12C23.6 12 22.8 12.8 22.8 14.5C22.8 12.8 22 12 20.3 12C22 12 22.8 11.2 22.8 9.5Z' fill='%23FDEEF4'/></svg>" />
+
+    <!-- Google Fonts: Quicksand (Headings) & Nunito (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Quicksand:wght@600;700;800&display=swap" rel="stylesheet" />
+
+    <style>
+      :root {
+        --color-bg: #F5EFF8;
+        --color-surface: #FFFFFF;
+        --color-secondary: #D7C4E8;
+        --color-mauve: #B48AB8;
+        --color-primary: #784E82;
+        --color-primary-hover: #63396D;
+        --color-plum-sub: #765477;
+        --color-plum-dark: #342C40;
+        --color-card-border: #E8DCEF;
       }
-    </script>
-    <script type="module" src="/src/main.tsx"></script>
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        min-height: 100vh;
+        background: var(--color-bg);
+        color: var(--color-plum-dark);
+        font-family: 'Nunito', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 32px 20px;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .welcome-container {
+        max-width: 960px;
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+        justify-content: center;
+      }
+
+      /* Brand Header */
+      .brand-header {
+        text-align: center;
+        margin-bottom: 44px;
+      }
+
+      .logo-badge {
+        width: 68px;
+        height: 68px;
+        margin: 0 auto 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #FFFFFF;
+        border-radius: 20px;
+        border: 1.5px solid var(--color-secondary);
+        box-shadow: 0 8px 24px rgba(120, 78, 130, 0.08);
+      }
+
+      .brand-name {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--color-primary);
+        margin-bottom: 8px;
+      }
+
+      .welcome-heading {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 38px;
+        font-weight: 800;
+        color: var(--color-plum-dark);
+        margin-bottom: 12px;
+        line-height: 1.2;
+      }
+
+      .welcome-subtitle {
+        font-size: 17px;
+        color: var(--color-plum-sub);
+        max-width: 580px;
+        margin: 0 auto;
+        line-height: 1.6;
+        font-weight: 500;
+      }
+
+      /* Portals Grid */
+      .portals-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+        width: 100%;
+        max-width: 860px;
+      }
+
+      .portal-card {
+        background: var(--color-surface);
+        border: 1.5px solid var(--color-card-border);
+        border-radius: 24px;
+        padding: 40px 32px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(120, 78, 130, 0.06);
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .portal-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 18px 40px rgba(120, 78, 130, 0.12);
+        border-color: var(--color-secondary);
+      }
+
+      .portal-icon-wrapper {
+        width: 76px;
+        height: 76px;
+        border-radius: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 22px;
+        transition: transform 0.25s ease;
+      }
+
+      .portal-card:hover .portal-icon-wrapper {
+        transform: scale(1.05);
+      }
+
+      .icon-kids {
+        background: #FAF4FD;
+        border: 1.5px solid #E6D5F2;
+        color: #784E82;
+      }
+
+      .icon-adult {
+        background: #F8F3FC;
+        border: 1.5px solid #DFC9EE;
+        color: #5F396B;
+      }
+
+      .portal-tag {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 4px 12px;
+        border-radius: 999px;
+        margin-bottom: 12px;
+      }
+
+      .tag-kids {
+        background: #F3EAF8;
+        color: #784E82;
+      }
+
+      .tag-adult {
+        background: #EDE1F5;
+        color: #55275F;
+      }
+
+      .portal-title {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 26px;
+        font-weight: 800;
+        color: var(--color-plum-dark);
+        margin-bottom: 12px;
+      }
+
+      .portal-description {
+        font-size: 15px;
+        color: var(--color-plum-sub);
+        line-height: 1.6;
+        margin-bottom: 28px;
+        flex: 1;
+        max-width: 320px;
+      }
+
+      .portal-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        max-width: 260px;
+        padding: 14px 24px;
+        border-radius: 14px;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+        box-shadow: 0 4px 14px rgba(120, 78, 130, 0.18);
+      }
+
+      .btn-kids {
+        background: var(--color-primary);
+        color: #FFFFFF;
+      }
+
+      .btn-kids:hover {
+        background: var(--color-primary-hover);
+        transform: translateY(-1px);
+        box-shadow: 0 6px 18px rgba(120, 78, 130, 0.25);
+      }
+
+      .btn-adult {
+        background: #5A3566;
+        color: #FFFFFF;
+      }
+
+      .btn-adult:hover {
+        background: #462551;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 18px rgba(90, 53, 102, 0.28);
+      }
+
+      .btn-arrow {
+        transition: transform 0.2s ease;
+      }
+
+      .portal-card:hover .btn-arrow {
+        transform: translateX(3px);
+      }
+
+      /* Privacy & Security Footnote */
+      .trust-strip {
+        margin-top: 36px;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        font-size: 13px;
+        color: #8E7090;
+      }
+
+      .trust-item {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
+
+      .trust-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--color-mauve);
+      }
+
+      /* Footer */
+      .welcome-footer {
+        text-align: center;
+        padding-top: 24px;
+        font-size: 12px;
+        color: #9C839E;
+      }
+
+      /* Responsive */
+      @media (max-width: 720px) {
+        .portals-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .welcome-heading {
+          font-size: 30px;
+        }
+
+        .welcome-subtitle {
+          font-size: 15px;
+        }
+
+        .portal-card {
+          padding: 32px 24px;
+        }
+
+        .trust-strip {
+          flex-direction: column;
+          gap: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="welcome-container">
+      <!-- Brand & Heading -->
+      <header class="brand-header">
+        <div class="logo-badge" title="Nurtura">
+          <!-- Elegant Purple Crescent Moon with Small Star -->
+          <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="16" fill="#784E82" />
+            <path d="M17.5 9.2C13.2 9.2 9.8 12.3 9.8 16.2C9.8 20.1 13.2 23.2 17.5 23.2C18.6 23.2 19.6 22.9 20.5 22.4C16.8 21.6 14.1 19.1 14.1 16.2C14.1 13.3 16.8 10.8 20.5 10C19.6 9.5 18.6 9.2 17.5 9.2Z" fill="#FDEEF4" />
+            <path d="M22.8 9.5C22.8 11.2 23.6 12 25.3 12C23.6 12 22.8 12.8 22.8 14.5C22.8 12.8 22 12 20.3 12C22 12 22.8 11.2 22.8 9.5Z" fill="#FDEEF4" />
+          </svg>
+        </div>
+        <p class="brand-name">Nurtura</p>
+        <h1 class="welcome-heading">Welcome to Nurtura</h1>
+        <p class="welcome-subtitle">A supportive space for menstrual health, learning, and wellbeing.</p>
+      </header>
+
+      <!-- Portals Selection -->
+      <main class="portals-grid" role="region" aria-label="Portal Selection">
+        <!-- Option 1: Kids Portal -->
+        <article class="portal-card">
+          <div class="portal-icon-wrapper icon-kids" aria-hidden="true">
+            <!-- Gentle Book & Flower/Moon Icon -->
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" />
+              <path d="M6 6h10" />
+              <path d="M6 10h8" />
+              <path d="M6 14h6" />
+              <circle cx="16" cy="14" r="2" fill="currentColor" fill-opacity="0.2" />
+            </svg>
+          </div>
+          <span class="portal-tag tag-kids">Ages 10–16</span>
+          <h2 class="portal-title">Kids</h2>
+          <p class="portal-description">Learn, explore, and understand your menstrual health.</p>
+          <a class="portal-btn btn-kids" href="/kids/" id="enter-kids-portal">
+            <span>Enter Kids Portal</span>
+            <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </a>
+        </article>
+
+        <!-- Option 2: Adult Portal -->
+        <article class="portal-card">
+          <div class="portal-icon-wrapper icon-adult" aria-hidden="true">
+            <!-- Elegant Moon & Wellness Leaf Icon -->
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+              <path d="M16 11c1 2 3 3 5 3" />
+              <circle cx="18" cy="6" r="1" fill="currentColor" />
+            </svg>
+          </div>
+          <span class="portal-tag tag-adult">Adult Sanctuary</span>
+          <h2 class="portal-title">Adult</h2>
+          <p class="portal-description">Explore menstrual health information and tools for adults.</p>
+          <a class="portal-btn btn-adult" href="/adult/" id="enter-adult-portal">
+            <span>Enter Adult Portal</span>
+            <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </a>
+        </article>
+      </main>
+
+      <!-- Trust & Privacy Safeguards -->
+      <div class="trust-strip">
+        <div class="trust-item">
+          <span class="trust-dot"></span>
+          <span>100% Private &amp; Local-First</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-dot"></span>
+          <span>Zero Tracking Scripts</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-dot"></span>
+          <span>Independent Secure Portals</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="welcome-footer">
+      <p>&copy; 2026 Nurtura &middot; Private, gentle, and evidence-informed menstrual health for all ages.</p>
+    </footer>
   </body>
 </html>
